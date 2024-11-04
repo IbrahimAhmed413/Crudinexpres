@@ -40,7 +40,18 @@ app.post('/',(req, res, next)=>{
   users.push(newuser);
   res.status(200).json({message: 'user added', data:newuser})
 })
-
+app.delete('/:id', (req, res, next)=>{
+  const nid = req.params.id;
+  const founduser =  users.find((e)=>e.id==nid)
+  if(founduser){
+    const deleteduser = users.filter((u)=>u.id == nid)
+    console.log("user deleted", deleteduser );
+    res.status(200).json({message:'user deleted successfully', data:deleteduser})
+  }else{
+    console.log('chal choor')
+  }
+})
+app.
 app.listen(2000, ()=>{
   console.log("this is running oon a http://localhost:2000")
 })

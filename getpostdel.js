@@ -37,13 +37,11 @@ App.post("/users", (req, res, next) => {
       .json({ message: "could not create user", success: false });
   } else {
     console.log("new user :", createuser);
-    res
-      .status(200)
-      .json({
-        success: true,
-        message: "user added successfully!",
-        data: createuser,
-      });
+    res.status(200).json({
+      success: true,
+      message: "user added successfully!",
+      data: createuser,
+    });
   }
 });
 App.delete("/users/:uid", (req, res, next) => {
@@ -58,9 +56,7 @@ App.delete("/users/:uid", (req, res, next) => {
     users = deleteUser;
     res.status(200).json({ messgae: "user deleted successfully" });
   } else {
-    res
-      .status(400)
-      .json({ messgae: "could not delete the user, user doesnt exists." });
+    res.status(400).json({ messgae: "could not delete the user, user doesnt exists." });
   }
 });
 
