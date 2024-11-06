@@ -73,11 +73,14 @@ app.delete("/:id", (req, res, next) => {
 app.patch('/:id', (req, res, next)=>{
   id = req.params.id;
   userid = users.find((e)=>e.id == id);
+
   const {name, email} = req.body
 
   if(userid){
-    users[userid] = {id:id, name:name, email:email}
-    res.status(200).json({message:"oye hoye updated", data: users[userid]})
+    const index = users.findIndex((e=>e.id == id));
+    users[index] = {id:id, name:name, email:email}
+    res.status(200).json({message:"oye hoye updated", data: users[index]})
+    console.log("userid ", index);
   }
   else{
     console.log('ohoooo ni na update ni hua');
